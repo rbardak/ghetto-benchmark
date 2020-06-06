@@ -5,7 +5,7 @@
 
 namespace timing {
 
-long seconds_since_epoch()
+long secondsSinceEpoch()
 {
     return std::time(nullptr);
 }
@@ -13,16 +13,16 @@ long seconds_since_epoch()
 class Measurement {
 public:
     void start()
-    { start_time = clock.now(); }
+    { startTime = clock.now(); }
     void end()
-    { end_time = clock.now(); }
+    { endTime = clock.now(); }
 
-    double elapsed_time()
+    double elapsedTime()
     {
-        if (end_time > start_time)
+        if (endTime > startTime)
         {
-            auto difference = end_time - start_time;
-            auto seconds = std::chrono::duration_cast<duration_type>(difference);
+            auto difference = endTime - startTime;
+            auto seconds = std::chrono::duration_cast<Duration>(difference);
             return seconds.count();
         }
         else
@@ -34,14 +34,14 @@ public:
     }
 
 public:
-    using clock_type = std::chrono::steady_clock;
-    using time_type = std::chrono::time_point<clock_type>;
-    using duration_type = std::chrono::duration<double>;
+    using Clock = std::chrono::steady_clock;
+    using Time = std::chrono::time_point<Clock>;
+    using Duration = std::chrono::duration<double>;
 
 private:
-    time_type start_time;
-    time_type end_time;
-    clock_type clock;
+    Time startTime;
+    Time endTime;
+    Clock clock;
 };
 
 }

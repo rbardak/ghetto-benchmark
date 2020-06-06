@@ -3,12 +3,11 @@
 #include <functional>
 
 #include "sin_test.hpp"
+#include "util.hpp"
 
 int main()
 {
-    std::cout << std::setprecision(3)
-              << sinus_test(100000000)
-              << " seconds have elapsed."
-              << std::endl;
+    std::cout << "Performing sine wave benchmark...\n";
+    printSeconds(sinusTest(100000000));
     return 0;
 }
