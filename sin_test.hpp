@@ -14,6 +14,8 @@ double sinusTest(const long loops)
     auto rand = std::bind(distribution, generator);
     
     // draw a random number based on external parameters to avoid compile-time execution.
+    // We use volatile here to ensure that the benchmark is actually compiled
+    // into the program and performed.
     volatile double x = rand();
 
     timing::Measurement timer;
