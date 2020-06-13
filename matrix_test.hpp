@@ -31,7 +31,7 @@ public:
         // Using these coefficients in a polynomial series will yield the 
         // polynomial function with minimal least squares deviation from the
         // input/response data.
-        // Volatile is used to insure that the compiler does not skip the
+        // Volatile is used to ensure that the compiler does not skip the
         // benchmark, due to its results never being used.
         NO_WARN_UNUSED(
             volatile auto expansionCoefficients = 
