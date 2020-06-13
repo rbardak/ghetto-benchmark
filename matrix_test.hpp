@@ -2,6 +2,7 @@
 #include <cmath>
 #include "eigen/Eigen/Dense"
 
+#include "macro.hpp"
 #include "timing.hpp"
 
 class MatrixBenchmarks
@@ -32,9 +33,11 @@ public:
         // input/response data.
         // Volatile is used to insure that the compiler does not skip the
         // benchmark, due to its results never being used.
-        volatile auto expansionCoefficients = 
-            expansionMatrix.colPivHouseholderQr().solve(response);
-        
+        NO_WARN_UNUSED(
+            volatile auto expansionCoefficients = 
+                expansionMatrix.colPivHouseholderQr().solve(response);
+        )
+
         timer.end();
         return timer.elapsedTime();
     }
