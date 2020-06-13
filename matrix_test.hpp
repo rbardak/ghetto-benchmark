@@ -12,8 +12,8 @@ private:
     using Vector = Eigen::VectorXd;
 
 public:
-    template <long order>
-    static double leastSquaresPolynomial(long size)
+    template <size_t order>
+    static double leastSquaresPolynomial(size_t size)
     {
         Vector input = Vector::LinSpaced(size, -1, 1);
         Vector response = Vector::Random(size);
@@ -22,7 +22,7 @@ public:
         timing::Measurement timer;
         timer.start();
         
-        for(long i = 0; i < size; ++i)
+        for(size_t i = 0; i < size; ++i)
         {
             Vector expansion = calcPolynomialExpansion<order>(input[i]);
             expansionMatrix.row(i) = expansion;
@@ -42,12 +42,12 @@ public:
         return timer.elapsedTime();
     }
 
-    template <long order>
+    template <size_t order>
     static Vector calcPolynomialExpansion(double input)
     {
         Vector expansion{order + 1};
         
-        for(long i = 0; i < order + 1; ++i)
+        for(size_t i = 0; i < order + 1; ++i)
             expansion[i] = std::pow(input, i);
 
         return expansion;

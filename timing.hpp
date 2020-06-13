@@ -5,7 +5,7 @@
 
 namespace timing {
 
-long secondsSinceEpoch()
+long long secondsSinceEpoch()
 {
     return std::time(nullptr);
 }

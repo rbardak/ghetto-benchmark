@@ -3,7 +3,7 @@
 
 #include "timing.hpp"
 
-double sinusTest(const long loops)
+double sinusTest(const size_t loops)
 {
     // This function loops over the sinus function in a way that is not
     // easily optimizable to test CPU performance.
@@ -20,7 +20,7 @@ double sinusTest(const long loops)
 
     timing::Measurement timer;
     timer.start();
-    for (long i = 0; i<loops; ++i)
+    for (size_t i = 0; i<loops; ++i)
         x = std::sin(3*x);
     timer.end();
 
