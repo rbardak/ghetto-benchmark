@@ -12,7 +12,7 @@ int main()
 {
     std::cout << "Sine wave benchmark. This tests maximum performance for single core CPU calculations.\n";
     std::cout << "evaluating sine function 500,000,000 times.\n";
-    //printSeconds(sinusTest(500'000'000));
+    printSeconds(sinusTest(500'000'000));
     std::cout << std::endl;
 
     std::cout << "Least squares matrix benchmark. Testing random access timing speed of RAM.\n";
