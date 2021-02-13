@@ -28,7 +28,7 @@ public:
         else
         {
             std::cout << "[ERROR] Time measurement start occured after end."
-            << std::endl;
+                      << std::endl;
             return 0;
         }
     }

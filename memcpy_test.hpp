@@ -7,9 +7,9 @@
 
 double memcpy_test(size_t size, size_t passes)
 {
-    std::vector<char> memoryArray(size, '0');
+    std::vector<unsigned char> memoryArray(size, '0');
 
-    auto distribution = std::uniform_int_distribution<char>(0, 255);
+    auto distribution = std::uniform_int_distribution<unsigned char>(0, 255);
     auto generator = std::default_random_engine(timing::secondsSinceEpoch());
     auto randomChar = std::bind(distribution, generator);
 

@@ -19,15 +19,17 @@ public:
         Vector response = Vector::Random(size);
         Matrix expansionMatrix{size, order + 1};
         
-        timing::Measurement timer;
-        timer.start();
         
         for(size_t i = 0; i < size; ++i)
         {
             Vector expansion = calcPolynomialExpansion<order>(input[i]);
             expansionMatrix.row(i) = expansion;
         }
+        std::cout<<"Matrix generation done. Starting timer..." << std::endl;
         
+        timing::Measurement timer;
+        timer.start();
+
         // Using these coefficients in a polynomial series will yield the 
         // polynomial function with minimal least squares deviation from the
         // input/response data.
@@ -42,6 +44,7 @@ public:
         return timer.elapsedTime();
     }
 
+private:
     template <size_t order>
     static Vector calcPolynomialExpansion(double input)
     {
