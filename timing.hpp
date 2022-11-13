@@ -12,6 +12,16 @@ long long secondsSinceEpoch()
 
 class Measurement {
 public:
+    using Clock = std::chrono::steady_clock;
+    using Time = std::chrono::time_point<Clock>;
+    using Duration = std::chrono::duration<double>;
+
+private:
+    Time startTime;
+    Time endTime;
+    Clock clock;
+
+public:
     void start()
     { startTime = clock.now(); }
     void end()
@@ -32,16 +42,6 @@ public:
             return 0;
         }
     }
-
-public:
-    using Clock = std::chrono::steady_clock;
-    using Time = std::chrono::time_point<Clock>;
-    using Duration = std::chrono::duration<double>;
-
-private:
-    Time startTime;
-    Time endTime;
-    Clock clock;
 };
 
 }

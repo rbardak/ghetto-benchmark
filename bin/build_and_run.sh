@@ -9,3 +9,5 @@ cd $BUILD_DIR
 
 cmake $PROJECT_DIR
 make -j8
+
+$BUILD_DIR/main

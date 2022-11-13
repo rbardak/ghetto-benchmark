@@ -4,13 +4,22 @@
 #include "matrix_test.hpp"
 #include "memcpy_test.hpp"
 #include "sin_test.hpp"
+#include "logistic_map_test.hpp"
 #include "util.hpp"
 
 void doMemcpyTestAndReport(size_t memSize, size_t memPasses);
 
 int main()
 {
+
+    std::cout << "Logistic Map benchmark. This tests maximum performance for single core CPU calculations.\n";
+    std::cout << "Note: This should be independent of cmath implementation.\n";
+    std::cout << "evaluating logistic map function 5,000,000,000 times.\n";
+    printSeconds(logisticMapTest(5'000'000'000));
+    std::cout << std::endl;
+
     std::cout << "Sine wave benchmark. This tests maximum performance for single core CPU calculations.\n";
+    std::cout << "Note: Performance may depend on cmath implementation of local machine.\n";
     std::cout << "evaluating sine function 500,000,000 times.\n";
     printSeconds(sinusTest(500'000'000));
     std::cout << std::endl;
@@ -25,7 +34,7 @@ int main()
     std::cout << "Memcpy test. Sequential RAM writing speed. Testing maximum data throughput on RAM for small, medium and large sized arrays." << std::endl;
     doMemcpyTestAndReport(1000l * 1000l, 32*64*64);
     doMemcpyTestAndReport(512l * 1000l * 1000l, 4*64);
-    doMemcpyTestAndReport(4096l * 1000l * 1000l, 32);
+    doMemcpyTestAndReport(4096ll * 1000ll * 1000ll, 32);
 
    return 0;
 }
