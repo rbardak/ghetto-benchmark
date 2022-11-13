@@ -2,7 +2,7 @@
 
 #include "timing.hpp"
 
-inline constexpr double logisticMap(const double x) {
+constexpr double logisticMap(const double x) {
     return 3.56999 * x * (1 - x); // this should produce very chaotic trajectories
 }
 

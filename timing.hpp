@@ -32,7 +32,7 @@ public:
         if (endTime > startTime)
         {
             auto difference = endTime - startTime;
-            auto seconds = std::chrono::duration_cast<Duration>(difference);
+            Duration seconds = std::chrono::duration_cast<Duration>(difference);
             return seconds.count();
         }
         else
